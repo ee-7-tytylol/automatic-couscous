@@ -11,4 +11,4 @@ jobs:
        name: production
     steps:
       - name: test
-        run: curl -i -H "Authorization:Token ${{GITHUB_TOKEN}}" "https://api.github.com/user"
+        run: curl -i -H "Authorization:Token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/user"
