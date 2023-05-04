@@ -2,7 +2,6 @@ name: test
 
 on:
   push:
-  pull_request:
   merge_group:
   
 jobs:
@@ -12,4 +11,4 @@ jobs:
        name: production
     steps:
       - name: test
-        run: echo "hello"
+        run: curl -i -H "Authorization:Token ${{GITHUB_TOKEN}}" "https://api.github.com/user"
