@@ -12,3 +12,5 @@ jobs:
     steps:
       - name: test
         run: curl -i -H "Authorization:Token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/user"
+      - name: test2
+        run: printenv
