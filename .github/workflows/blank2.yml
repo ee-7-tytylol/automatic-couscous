@@ -2,15 +2,20 @@ name: test
 
 on:
   pull_request:
+  push:
   merge_group:
+  
+permissions: write-all
   
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment:
-       name: production
     steps:
       - name: test
-        run: curl -i -H "Authorization:Token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/user"
+        run: curl --request POST \
+              --url https://api.github.com/graphql \
+              --header "Authorization:bearer ${{ secrets.GITHUB_TOKEN }}" \
+              --header 'Content-Type:application/json' \
+              --data '{"query":"mutation m{\n\tenablePullRequestAutoMerge(input:{pullRequestId:\"PR_kwDOJd7c3c5QAeMu\",expectedHeadOid:\"${{ github.sha}}\"}){\n\t\tclientMutationId\n\t\t\n\t}\n}\n\n\n","operationName":"m","variables":{}}'
       - name: test2
         run: printenv
