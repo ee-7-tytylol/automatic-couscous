@@ -14,8 +14,8 @@ jobs:
       - name: test
         run: curl --request POST \
               --url https://api.github.com/graphql \
-              --header "Authorization:bearer ${{ secrets.GITHUB_TOKEN }}" \
-              --header 'Content-Type:application/json' \
+              --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              --header 'Content-Type: application/json' \
               --data '{"query":"mutation m{\n\tenablePullRequestAutoMerge(input:{pullRequestId:\"PR_kwDOJd7c3c5QAeMu\",expectedHeadOid:\"${{ github.sha}}\"}){\n\t\tclientMutationId\n\t\t\n\t}\n}\n\n\n","operationName":"m","variables":{}}'
       - name: test2
         run: printenv
