@@ -12,4 +12,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test
-        run: curl --request POST  --url https://api.github.com/graphql --header 'Authorization:bearer ${{ secrets.GITHUB_TOKEN }}' --header 'Content-Type:application/json'  --data '{"query":"mutation m{enablePullRequestAutoMerge(input:{pullRequestId:\"PR_kwDOJd7c3c5QAeMu\",expectedHeadOid:\"${{ github.sha}}\"}){clientMutationId}}","operationName":"m","variables":{}}'
+        run: curl --request POST --url https://api.github.com/graphql --header 'Authorization:bearer ${{ secrets.GITHUB_TOKEN }}' --header 'Content-Type:application/json'  --data '{"query":"mutation m{enqueuePullRequest(input:{pullRequestId:\"PR_kwDOJd7c3c5QAeMu\",expectedHeadOid:\"${{ github.sha}}\"}){clientMutationId}}","operationName":"m","variables":{}}'
